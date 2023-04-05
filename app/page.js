@@ -1,8 +1,8 @@
 import Image from "next/image";
-import React from "react";
+import HomePageContainer from "@/containers/home-page-container";
 
 const HomePage = () => {
-  return <div>HomePage</div>;
+  return <HomePageContainer />;
 };
 
 export default HomePage;
