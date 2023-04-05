@@ -2,7 +2,7 @@
 import { useState } from "react";
 import styles from "./styles.module.scss";
 
-const index = () => {
+const PromptForm = () => {
   const [prompt, setPrompt] = useState("");
   const handleFormSubmit = () => {};
 
@@ -26,4 +26,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default PromptForm;
