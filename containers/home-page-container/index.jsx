@@ -1,3 +1,4 @@
+import Examples from "./examples";
 import PromtSuggestions from "./prompt-suggestions";
 import PromptForm from "./promt-form";
 import styles from "./styles.module.scss";
@@ -13,6 +14,7 @@ const HomePageContainer = () => {
       </p>
       <PromptForm />
       <PromtSuggestions />
+      <Examples />
     </div>
   );
 };
