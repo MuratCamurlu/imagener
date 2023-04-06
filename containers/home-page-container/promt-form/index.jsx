@@ -4,8 +4,11 @@ import { useHomePage } from "../useHomepage";
 import styles from "./styles.module.scss";
 
 const PromptForm = () => {
-  const { prompt, setPrompt } = useHomePage();
-  const handleFormSubmit = () => {};
+  const { prompt, setPrompt, generateImage } = useHomePage();
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    generateImage();
+  };
 
   return (
     <div className={styles.promptForm}>
