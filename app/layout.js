@@ -1,7 +1,14 @@
 import "@/styles/reset.css";
 import "@/styles/variables.css";
 import "@/styles/global.css";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { fab } from "@fortawesome/free-brands-svg-icons";
+import { fas } from "@fortawesome/free-solid-svg-icons";
+
+library.add(fab, fas);
+
 import { mainFont } from "@/libs/font";
+import Footer from "@/components/footer";
 
 export const metadata = {
   title: "Create Next App",
@@ -13,6 +20,7 @@ export default function RootLayout({ children }) {
     <html lang="en" className={mainFont.className}>
       <body className="layout">
         {children}
+        <Footer />
         <div className="overlay"></div>
       </body>
     </html>
