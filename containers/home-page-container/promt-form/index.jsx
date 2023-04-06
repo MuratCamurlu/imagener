@@ -1,9 +1,10 @@
 "use client";
-import { useState } from "react";
+
+import { useHomePage } from "../useHomepage";
 import styles from "./styles.module.scss";
 
 const PromptForm = () => {
-  const [prompt, setPrompt] = useState("");
+  const { prompt, setPrompt } = useHomePage();
   const handleFormSubmit = () => {};
 
   return (
