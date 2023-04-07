@@ -6,8 +6,21 @@ export const HomePageProvider = ({ children }) => {
   const [prompt, setPrompt] = useState("");
   const [image, setImage] = useState(null);
   const [error, setError] = useState(null);
+  const [resultPrompt, setResultPrompt] = useState("");
+  const [isSubmitting, setSubmitting] = useState(false);
+
+  const changePrompt = (newPrompt) => setPrompt(newPrompt);
+
+  const copyPrompt = (copiedPrompt) => {
+    changePrompt(copiedPrompt);
+    window.scrollTo(0, 0);
+  };
 
   const generateImage = async () => {
+    setSubmitting(true);
+    setImage(null);
+    setResultPrompt("");
+
     try {
       const response = await fetch("/api/generate", {
         method: "POST",
@@ -16,25 +29,30 @@ export const HomePageProvider = ({ children }) => {
         },
         body: JSON.stringify({ prompt }),
       });
-      if (!response.ok) throw new Error(response.statusText ?? response.status);
+      if (!response.ok) throw new Error(response.statusText || response.status);
 
       const generatedImage = await response.json();
+      setError(null);
+      setResultPrompt(prompt);
+      setImage(generatedImage);
     } catch (error) {
-      throw new Error("Failed to generate");
+      setError(error);
     }
+    setSubmitting(false);
   };
-  const changePrompt = (newPrompt) => {
-    setPrompt(newPrompt);
-    window.scrollTo(0, 0);
-  };
+
   const data = useMemo(
     () => ({
       prompt,
       setPrompt,
+      isSubmitting,
+      copyPrompt,
       generateImage,
-      changePrompt,
+      image,
+      resultPrompt,
+      error,
     }),
-    [prompt]
+    [isSubmitting, prompt, image, resultPrompt, error]
   );
 
   return (

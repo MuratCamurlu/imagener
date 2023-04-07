@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import applyRateLimit from "./utils/rate-limiter";
+import applyRateLimit from "./utils/rate-limiting";
 
 export async function middleware(request) {
   const response = NextResponse.next();

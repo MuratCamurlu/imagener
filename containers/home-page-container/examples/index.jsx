@@ -5,13 +5,13 @@ import Tag from "@/components/tag";
 import Image from "next/image";
 import { useHomePage } from "../useHomepage";
 const Examples = () => {
-  const { changePrompt } = useHomePage();
+  const { copyPrompt } = useHomePage();
   return (
     <div className={styles.examples}>
       {EXAMPLES.map((example) => (
         <div key={example.id} className={styles.example}>
           <h4>{example.prompt} </h4>
-          <Tag title="copy" onClick={() => changePrompt(example.prompt)} />
+          <Tag title="copy" onClick={() => copyPrompt(example.prompt)} />
           <Image src={example.image} alt={example.prompt} fill />
         </div>
       ))}
